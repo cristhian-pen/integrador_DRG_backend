@@ -12,36 +12,69 @@ const procedimento = require('../procedimento');
 const suporteVentilatorio = require('../supVent');
 const index = require('../index'); //faltou esse
 const hospital = require('../hospital');
+const logs = require('../Logs/index');
+const db = require('../../config/db');
+
+module.exports = Relationship = () => {
+
+    //Criação das tabelas
+    /*   rn.sync();
+      altaAdministrativa.sync();
+      cidPrincipal.sync();
+      analiseCritica.sync(); */
+    beneficiario.sync({ force: true });
+    /* cidPrincipal.sync();
+    cidSecundario.sync();
+    condicaoAdquirida.sync();
+    cti.sync();
+    drgBrasilRefinado.sync();
+    medico.sync();
+    procedimento.sync();
+    suporteVentilatorio.sync();
+    index.sync(); */
+    //hospital.sync();
+    /*  logs.sync(); */
 
 
-//Criação de tabelas
-/* rn.sync();
-altaAdministrativa.sync();
-cidSecundario.sync();
-analiseCritica.sync();
-beneficiario.sync();
-cidPrincipal.sync()
-condicaoAdquirida.sync();
-cti.sync();
-drgBrasilRefinado.sync();
-medico.sync();
-procedimento.sync();
-suporteVentilatorio.sync();
-index.sync();
-hospital.sync(); */
+    //Relacionamento das tabelas
+    const proc_beneficiario = db.define('PROC_BENEFICIARIO', {});
+    proc_beneficiario.sync();
+
+    // 1:1
+    //hospital.hasOne(beneficiario, { constraints: true, foreignKey: 'id_beneficiario' }); 
+    beneficiario.belongsTo(hospital, { constraints: true, foreignKey: 'id_beneficiario' });
+    beneficiario.hasOne(altaAdministrativa, { foreignKey: 'id_beneficiario' });
+    altaAdministrativa.belongsTo(beneficiario, { foreignKey: 'id_beneficiario' });
+    beneficiario.hasOne(suporteVentilatorio, { foreignKey: 'id_beneficiario' });
+    suporteVentilatorio.belongsTo(beneficiario, { foreignKey: 'id_beneficiario' });
+    procedimento.hasMany(medico, { foreignKey: 'id_procedimento' });
+    medico.belongsTo(procedimento, { foreignKey: 'id_procedimento' });
+    cti.hasOne(medico, { foreignKey: 'id_cti' });
+    medico.belongsTo(cti, { foreignKey: 'id_cti' });
+    cti.hasOne(hospital, { foreignKey: 'id_cti' });
+    hospital.belongsTo(cti, { foreignKey: 'id_cti' });
+
+    //1:n
+    beneficiario.hasMany(medico, { foreignKey: 'id_beneficiario' });
+    beneficiario.hasMany(cidSecundario, { foreignKey: 'id_beneficiario' });
+    beneficiario.hasMany(cti, { foreignKey: 'id_beneficiario' });
+    beneficiario.hasMany(condicaoAdquirida, { foreignKey: 'id_beneficiario' });
+    beneficiario.hasMany(analiseCritica, { foreignKey: 'id_beneficiario' });
+
+    //n:n
+    beneficiario.belongsToMany(procedimento, {
+        as: 'beneficiarios',
+        through: proc_beneficiario,
+        foreignKey: 'id_beneficiario',
+        otherKey: 'id_procedimento'
+    });
+    procedimento.belongsToMany(beneficiario, {
+        as: 'procedimentos',
+        through: proc_beneficiario,
+        foreignKey: 'id_procedimento',
+        otherKey: 'id_beneficiario'
+    });
+
+}
 
 
-//Relacionamento das tabelas
-/* beneficiario.hasMany(procedimento);
-beneficiario.belongsToMany(condicaoAdquirida, { through: 'codigo', foreignKey: 'cd_paciente' });
-beneficiario.belongsTo(leito, { foreignKey: 'id_leito' });
-beneficiario.belongsTo(altaAdministrativa, { foreignKey: 'id_alta' });
-beneficiario.belongsTo(cti, { foreignKey: 'id_cti' });
-beneficiario.belongsTo(rn, { foreignKey: 'id_rn' });
-beneficiario.belongsTo(cidPrincipal, { foreignKey: 'codigo_cti' });
-medico.belongsTo(beneficiario, { foreignKey: 'id_medico' });
-medico.hasMany(procedimento);
-leito.belongsTo(suporteVentilatorio, { foreignKey: 'id_supVent' });
-leito.belongsTo(cti, { foreignKey: 'id_cti' });
-rn.belongsTo(altaAdministrativa, { foreignKey: 'id_alta' });
-condicaoAdquirida.belongsToMany(beneficiario, { through: 'codigo', foreignKey: 'codigo' }); */

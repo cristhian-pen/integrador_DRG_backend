@@ -23,6 +23,4 @@ const suporteVentilatorio = db.define('suporteVentilatorio', {
     }
 }, { timestamps: false, freezeTableName: true });
 
-suporteVentilatorio.sync();
-
 module.exports = suporteVentilatorio;

@@ -15,6 +15,5 @@ const logs = db.define('LOGS', {
     }
 
 }, { freezeTableName: true });
-logs.sync();
 
 module.exports = logs

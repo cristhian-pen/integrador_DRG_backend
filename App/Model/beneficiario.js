@@ -1,5 +1,6 @@
 const { DataTypes } = require('sequelize');
 const db = require('../config/db');
+const hospital = require('./hospital');
 
 
 const beneficiario = db.define('beneficiario', {
@@ -39,7 +40,5 @@ const beneficiario = db.define('beneficiario', {
         type: DataTypes.INTEGER(50)
     }
 }, { timestamps: false, freezeTableName: true });
-
-beneficiario.sync();
 
 module.exports = beneficiario;

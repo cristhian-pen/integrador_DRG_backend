@@ -26,6 +26,4 @@ const condicaoAdquirida = db.define('condicaoAdquirida', {
     }
 }, { timestamps: false, freezeTableName: true });
 
-condicaoAdquirida.sync();
-
 module.exports = condicaoAdquirida;

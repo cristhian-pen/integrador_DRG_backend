@@ -1,0 +1,30 @@
+--Grants Banco de dados simulação
+create database {banco_de_dados_simulacao};
+create user DBAFPES identified by '{senha_do_banco}';
+grant all on {banco_de_dados_simulacao}.* to DBAFPES;
+grant select, update, insert, delete, execute on {banco_de_dados_simulacao}.* to DBAFPES;
+grant alter, create, drop  on {banco_de_dados_simulacao}.* to DBAFPES;
+
+/*---------------------------------------------*/
+
+/*  cria usuario de acesso .env */
+
+create user ACESSOPRD identified by '{senha_do_usuario}';
+grant all on {banco_de_dados_simulacao}.* to ACESSOPRD;
+grant select, update, insert on {banco_de_dados_simulacao}.* to ACESSOPRD;
+
+flush privileges;
+commit;
+
+show grants for ACESSOPRD; /*Verificar se os grants foram corretos, se não tente executar novamente*/
+
+--Grants banco de dados prd
+create database {banco_de_dados_producao};
+create user DBAFPES identified by '{senha_do_usuario}';
+grant all on {banco_de_dados_producao}.* to DBAFPES;
+grant select, update, insert on {banco_de_dados_producao}.* to DBAFPES;
+flush privileges;
+commit;
+USE DBAFPES_PRD 
+
+show grants for DBAFPES; /*Verificar se os grants foram corretos, se não tente executar novamente*/

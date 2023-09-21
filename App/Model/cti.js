@@ -28,6 +28,4 @@ const cti = db.define('cti', {
     }
 }, { timestamps: false, freezeTableName: true });
 
-cti.sync();
-
 module.exports = cti;

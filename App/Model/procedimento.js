@@ -27,6 +27,4 @@ const procedimento = db.define('procedimento', {
 
 }, { timestamps: false, freezeTableName: true })
 
-procedimento.sync();
-
 module.exports = procedimento;

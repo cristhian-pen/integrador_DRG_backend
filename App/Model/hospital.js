@@ -20,6 +20,4 @@ const hospital = db.define('hospital', {
     }
 }, { timestamps: false, freezeTableName: true });
 
-hospital.sync();
-
 module.exports = hospital;

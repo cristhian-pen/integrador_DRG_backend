@@ -29,6 +29,4 @@ const drgBrasilRefinado = db.define('drgBrasilRefinado', {
     }
 }, { timestamps: false, freezeTableName: true });
 
-drgBrasilRefinado.sync();
-
 module.exports = drgBrasilRefinado;

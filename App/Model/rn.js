@@ -34,6 +34,4 @@ const rn = db.define('rn', {
     }
 }, { timestamps: false, freezeTableName: true });
 
-rn.sync();
-
 module.exports = rn;

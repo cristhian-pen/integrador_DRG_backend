@@ -24,6 +24,5 @@ const altaAdministrativa = db.define('altaAdministrativa', {
         type: DataTypes.DATE
     }
 }, { timestamps: false, freezeTableName: true });
-altaAdministrativa.sync();
 
 module.exports = altaAdministrativa;

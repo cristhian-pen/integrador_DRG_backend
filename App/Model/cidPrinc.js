@@ -27,6 +27,4 @@ const cidPrincipal = db.define('cidPrincipal', {
     }
 }, { timestamps: false, freezeTableName: true });
 
-cidPrincipal.sync();
-
 module.exports = cidPrincipal;

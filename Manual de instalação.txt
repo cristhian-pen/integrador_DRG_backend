@@ -1,0 +1,40 @@
+LEIA ME!!!!
+
+Requisitos para a aplicação:
+
+- Servidor windowns/Linux para rodar a aplicação(front-end e back-end);
+- NODEjs v.14.17.3 instalado no servidor
+- NGINX ou APACHE para rodar a aplicação.
+- Banco de dados mysql
+
+
+Manual simples da aplicação!
+
+1° Abrir o conteudo da pasta aplicativos, executar o arquivo grants.txt no banco de dados, apos isso, executar o arquivo scripts.txt, 
+isso criara o job de exclusão dos logs e criara os bancos de simulação e produção, usuario e senha padrões
+
+2° Após o deploy da aplicação e a primeira inicialização, todas as tabelas serão criadas e com isso a aplicação ja estara pronta para uso,
+
+3° para realizar a configuração de porta e api key da aplicação devera ser criado um arquivo .env na raiz da pasta integradorDRG, segue template:
+
+PORT = {porta escolhida}
+
+ENVIO = { "userName": "", "password": "", "origin": ""}
+
+KEY= 
+API_DRG=
+API_AUTH=
+
+DB_NAME=
+DB_USR=
+DB_PASS=
+DB_HOST=
+
+IMPORTANTE: o formato do arquivo devera ser exatamente como esta descrito acima, a chave ENVIO: devera ser informado o usuario e senha da api drg conforme documentação da mesma
+
+4° realizar o deploy da parte do front-end da aplicação, para este passo, o desenvolvedor devera ser contatado para configurar a aplicação
+
+5° Caso seja executado todos os passos acima com sucesso, a aplicação ja estara funcionando corretamente, neste caso para iniciar, 
+digite no navegador http://{endereço do servidor} e clicar em iniciar aplicação, se tudo estiver funcionando corretamente o sistema exibira uma mensagem de integração criada
+
+OBS:. Você pode acompanhar se sua integração iniciou ou não na pagina de logs, qualquer duvida ou sugestão, entre em contato na aba "Contato de Suporte".

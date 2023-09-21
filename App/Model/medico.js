@@ -29,6 +29,4 @@ const medico = db.define('medico', {
 
 }, { timestamps: false, freezeTableName: true });
 
-medico.sync();
-
 module.exports = medico;

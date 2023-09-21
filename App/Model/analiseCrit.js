@@ -16,6 +16,4 @@ const analiseCritica = db.define('analiseCritica', {
     }
 }, { timestamps: false, freezeTableName: true });
 
-analiseCritica.sync();
-
 module.exports = analiseCritica;

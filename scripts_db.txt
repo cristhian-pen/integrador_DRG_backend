@@ -1,0 +1,18 @@
+use dbafpes_sml;
+
+delimiter |
+
+create
+event purge_logs
+on schedule every 1 day
+comment "Apaga logs da base de dados com 2 meses de antecedencia"
+do
+ begin
+	delete from dbafpes_sml.logs
+    where createdAt < DATE_SUB(CURDATE(), INTERVAL 60 DAY );
+ end |
+ 
+ delimiter ;
+ 
+ show events;
+ 

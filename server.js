@@ -2,6 +2,7 @@ require('dotenv').config()
 const express = require('express');
 const app = express();
 const bodyparser = require('body-parser');
+const Relationship = require('./App/Model/TabsCreate/index');
 const db = require('./App/config/db');
 const { Integra, searchLogs, registerLogs } = require('./App/Controller/index');
 const cors = require('cors');
@@ -19,6 +20,7 @@ app.get('/logsExecucao', searchLogs);
 db.authenticate();
 try {
     console.log(`Connection established successfully on database ${NAME}`);
+    Relationship();
 } catch {
     console.log('Connection rejected, check your informations!');
 }

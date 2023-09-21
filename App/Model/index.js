@@ -109,6 +109,4 @@ const integra = db.define('DRG_EXPORTA', {
 
 }, { freezeTableName: true });
 
-integra.sync();
-
 module.exports = integra

@@ -17,11 +17,9 @@ let KEY = process.env.KEY;
 const data = new Date();
 const date = data.toISOString().split('T')[0];
 
-console.log(date);
-
 let object = {
-    "dataAltaInicial": `${date}`,
-    "dataAltaFinal": `${date}`,
+    "dataAltaInicial": "2023-06-01",
+    "dataAltaFinal": "2023-06-01",
     "page": 1
 }
 
@@ -45,8 +43,6 @@ async function Integra(req, res) {
         //Variavel utilizada para controlar o acesso aos arrays
         const contador = dados.data.total;
 
-
-        console.log('passei aqui');
         //Armazenamento dos dados nas tabelas
         for (var index = 0; index < contador; index++) {
 

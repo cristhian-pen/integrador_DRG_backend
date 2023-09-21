@@ -17,6 +17,4 @@ const cidSecundario = db.define('cidSecundario', {
     }
 }, { timestamps: false, freezeTableName: true });
 
-cidSecundario.sync();
-
 module.exports = cidSecundario; 
