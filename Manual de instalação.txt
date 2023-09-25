@@ -32,7 +32,13 @@ DB_HOST=
 
 IMPORTANTE: o formato do arquivo devera ser exatamente como esta descrito acima, a chave ENVIO: devera ser informado o usuario e senha da api drg conforme documentação da mesma
 
-4° realizar o deploy da parte do front-end da aplicação, para este passo, o desenvolvedor devera ser contatado para configurar a aplicação
+4° Configuração do front-end da aplicação:
+Localizar a parte API:
+- src/Services/API/index.js
+
+na linha: baseUrl, substituir o localhost pela URL que foi feito o deploy.
+Ex: https://someURL.com.br/api
+
 
 5° Caso seja executado todos os passos acima com sucesso, a aplicação ja estara funcionando corretamente, neste caso para iniciar, 
 digite no navegador http://{endereço do servidor} e clicar em iniciar aplicação, se tudo estiver funcionando corretamente o sistema exibira uma mensagem de integração criada

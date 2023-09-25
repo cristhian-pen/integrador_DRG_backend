@@ -18,12 +18,12 @@ const db = require('../../config/db');
 module.exports = Relationship = () => {
 
     //Criação das tabelas
-    /*   rn.sync();
-      altaAdministrativa.sync();
-      cidPrincipal.sync();
-      analiseCritica.sync(); */
+    rn.sync();
+    altaAdministrativa.sync();
+	cidPrincipal.sync();
+    analiseCritica.sync(); 
     beneficiario.sync({ force: true });
-    /* cidPrincipal.sync();
+    cidPrincipal.sync();
     cidSecundario.sync();
     condicaoAdquirida.sync();
     cti.sync();
@@ -31,17 +31,18 @@ module.exports = Relationship = () => {
     medico.sync();
     procedimento.sync();
     suporteVentilatorio.sync();
-    index.sync(); */
-    //hospital.sync();
-    /*  logs.sync(); */
+    index.sync(); 
+    hospital.sync();
+    logs.sync(); 
 
 
     //Relacionamento das tabelas
-    const proc_beneficiario = db.define('PROC_BENEFICIARIO', {});
-    proc_beneficiario.sync();
+    //const proc_beneficiario = db.define('PROC_BENEFICIARIO', {});
+    //proc_beneficiario.sync();
 
     // 1:1
-    //hospital.hasOne(beneficiario, { constraints: true, foreignKey: 'id_beneficiario' }); 
+/*
+    hospital.hasOne(beneficiario, { constraints: true, foreignKey: 'id_beneficiario' }); 
     beneficiario.belongsTo(hospital, { constraints: true, foreignKey: 'id_beneficiario' });
     beneficiario.hasOne(altaAdministrativa, { foreignKey: 'id_beneficiario' });
     altaAdministrativa.belongsTo(beneficiario, { foreignKey: 'id_beneficiario' });
@@ -74,7 +75,8 @@ module.exports = Relationship = () => {
         foreignKey: 'id_procedimento',
         otherKey: 'id_beneficiario'
     });
-
+	
+*/
 }
 
 
