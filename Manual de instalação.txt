@@ -8,14 +8,22 @@ Requisitos para a aplicação:
 - Banco de dados mysql
 
 
-Manual simples da aplicação!
+Manual de configuração da aplicação!
+
+
+
+##BANCO DE DADOS
 
 1° Abrir o conteudo da pasta aplicativos, executar o arquivo grants.txt no banco de dados, apos isso, executar o arquivo scripts.txt, 
 isso criara o job de exclusão dos logs e criara os bancos de simulação e produção, usuario e senha padrões
 
 2° Após o deploy da aplicação e a primeira inicialização, todas as tabelas serão criadas e com isso a aplicação ja estara pronta para uso,
 
-3° para realizar a configuração de porta e api key da aplicação devera ser criado um arquivo .env na raiz da pasta integradorDRG, segue template:
+
+
+##BACK-END
+
+1° para realizar a configuração de porta e api key da aplicação devera ser criado um arquivo .env na raiz da pasta integradorDRG, segue template:
 
 PORT = {porta escolhida}
 
@@ -32,15 +40,31 @@ DB_HOST=
 
 IMPORTANTE: o formato do arquivo devera ser exatamente como esta descrito acima, a chave ENVIO: devera ser informado o usuario e senha da api drg conforme documentação da mesma
 
-4° Configuração do front-end da aplicação:
-Localizar a parte API:
+
+
+##FRONT-END
+
+1° Localizar a parte API:
 - src/Services/API/index.js
 
-na linha: baseUrl, substituir o localhost pela URL que foi feito o deploy.
+Na linha: baseUrl, substituir o localhost pela URL que foi feito o deploy.
 Ex: https://someURL.com.br/api
 
+2° Criar um arquivo .env na pagina na raiz do projeto com o seguinte layout:
 
-5° Caso seja executado todos os passos acima com sucesso, a aplicação ja estara funcionando corretamente, neste caso para iniciar, 
+REACT_APP_SERVICE_ID=
+REACT_APP_TEMPLATE_ID=
+REACT_APP_USER_ID=
+
+Estas variáveis colocaram o sistema de envio de emails na aba "Contato de suporte" operacional, para que a configuração seja eficaz
+será necessario que entre em contato com o desenvolvedor para que ele oriente sobre a criação desta configuração.
+
+
+
+##CLIENTE - WEB
+
+1° Caso seja executado todos os passos acima com sucesso, a aplicação ja estara funcionando corretamente, neste caso para iniciar, 
 digite no navegador http://{endereço do servidor} e clicar em iniciar aplicação, se tudo estiver funcionando corretamente o sistema exibira uma mensagem de integração criada
+
 
 OBS:. Você pode acompanhar se sua integração iniciou ou não na pagina de logs, qualquer duvida ou sugestão, entre em contato na aba "Contato de Suporte".

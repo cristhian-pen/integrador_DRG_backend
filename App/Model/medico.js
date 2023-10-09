@@ -25,6 +25,15 @@ const medico = db.define('medico', {
     },
     tipAtuacao: {
         type: DataTypes.STRING
+    },
+    dataIntegracaoIni: {
+        type: DataTypes.DATE
+    },
+    dataIntegracaoFin: {
+        type: DataTypes.DATE
+    },
+    sn_integra: {
+        type: DataTypes.CHAR(2)
     }
 
 }, { timestamps: false, freezeTableName: true });

@@ -38,6 +38,15 @@ const beneficiario = db.define('beneficiario', {
     },
     idadeDias: {
         type: DataTypes.INTEGER(50)
+    },
+    dataIntegracaoIni: {
+        type: DataTypes.DATE
+    },
+    dataIntegracaoFin: {
+        type: DataTypes.DATE
+    },
+    sn_integra: {
+        type: DataTypes.CHAR(2)
     }
 }, { timestamps: false, freezeTableName: true });
 

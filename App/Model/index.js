@@ -106,7 +106,15 @@ const integra = db.define('DRG_EXPORTA', {
     cidade: {
         type: DataTypes.STRING(10)
     },
-
+    dataIntegracaoIni: {
+        type: DataTypes.DATE
+    },
+    dataIntegracaoFin: {
+        type: DataTypes.DATE
+    },
+    sn_integra: {
+        type: DataTypes.CHAR(2)
+    }
 }, { freezeTableName: true });
 
 module.exports = integra
