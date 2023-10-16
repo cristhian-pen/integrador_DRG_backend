@@ -193,7 +193,7 @@ const insertDrgExp = async (id, sitDrg, carIntDgr,
     usuCadDrg, usuCadAltDrg, dtUltAltDrg, usuUltAltDrg,
     corrRegAlt, usuCorDrg, dtUltRecDrg, leitoDrg, condAdqPaiDrg,
     estadoDrg, cidadeDrg
-    , dataIntegracaoIni, dataIntegracaoFin, snIntegra) => {
+    , dataIntegracaoIni, dataIntegracaoFin) => {
     index.create({
         id_integracao: id,
         situacao: sitDrg,
@@ -231,7 +231,6 @@ const insertDrgExp = async (id, sitDrg, carIntDgr,
         cidade: cidadeDrg,
         dataIntegracaoIni: dataIntegracaoIni,
         dataIntegracaoFin: dataIntegracaoFin,
-        sn_integra: snIntegra
     });
 }
 

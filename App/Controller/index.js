@@ -99,6 +99,8 @@ async function Integra(req, res) {
                 array[index].permanenciaPrevistaNaInternacao,
                 array[index].permanenciaPrevistaNaAlta,
                 array[index].permanenciaReal,
+                array[index].percentil,
+                array[index].procedencia,
                 array[index].ventilacaoMecanica,
                 array[index].dataCadastro,
                 array[index].usuarioCadastro,
@@ -114,8 +116,6 @@ async function Integra(req, res) {
                 array[index].cidade
                 , date,
                 date
-
-
             );
 
             await insertAlta(
@@ -327,7 +327,11 @@ async function Integra(req, res) {
 
 async function ManualIntegra(req, res) {
 
+    //Geração do token de autenticação
+    var token = await authentication();
+
     const { dataAltaIni, dataAltaFin, page } = req.body;
+
 
     const objectManual = {
         "dataAltaInicial": `${dataAltaIni}`,
@@ -335,8 +339,6 @@ async function ManualIntegra(req, res) {
         "page": `${page}`
     }
 
-    //Geração do token de autenticação
-    var token = await authentication();
     try {
 
         //Consumo e importação dos dados da api drg
@@ -344,7 +346,8 @@ async function ManualIntegra(req, res) {
             headers: {
                 Authorization: token,
                 'x-api-key': KEY,
-            }
+            },
+            timeout: 600000
         });
 
         //atribuição do array a uma variavel
@@ -395,6 +398,8 @@ async function ManualIntegra(req, res) {
                 array[index].permanenciaPrevistaNaInternacao,
                 array[index].permanenciaPrevistaNaAlta,
                 array[index].permanenciaReal,
+                array[index].percentil,
+                array[index].procedencia,
                 array[index].ventilacaoMecanica,
                 array[index].dataCadastro,
                 array[index].usuarioCadastro,
@@ -586,7 +591,7 @@ async function ManualIntegra(req, res) {
 
         //Retorna mensagem de OK
         res.json({
-            message: "Dados integrados"
+            message: "Dados integrados",
         });
 
     } catch (error) {
@@ -680,7 +685,41 @@ const searchLogs = async (req, res) => {
 }
 
 
+const consultaPagina = async (req, res) => {
+
+    const { dataAltaIni, dataAltaFin } = req.body;
+
+    const objectSearch = {
+        "dataAltaInicial": `${dataAltaIni}`,
+        "dataAltaFinal": `${dataAltaFin}`,
+        "pages": 1
+    }
+
+
+    var token = await authentication();
+    try {
+
+        //Consumo e importação dos dados da api drg
+        const dados = await api.post('/search', objectSearch, {
+            headers: {
+                Authorization: token,
+                'x-api-key': KEY,
+            }
+        });
+
+        const pages = dados.data.total;
+        const total = Math.ceil(pages / 100);
+
+        res.json({ total });
+    }
+    catch (err) {
+        console.log(err);
+    }
+
+}
+
+
 //Proxima feature da aplicação sera autenticação jwt
 //Code here...
 
-module.exports = { registerLogs, searchLogs, ManualIntegra, deletaIntegra, Integra };
+module.exports = { registerLogs, searchLogs, ManualIntegra, deletaIntegra, Integra, consultaPagina };

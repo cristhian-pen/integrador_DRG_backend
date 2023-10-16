@@ -4,7 +4,7 @@ const app = express();
 const bodyparser = require('body-parser');
 const Relationship = require('./App/Model/TabsCreate/index');
 const db = require('./App/config/db');
-const { searchLogs, registerLogs, ManualIntegra, deletaIntegra, Integra } = require('./App/Controller/index');
+const { searchLogs, registerLogs, ManualIntegra, deletaIntegra, Integra, consultaPagina } = require('./App/Controller/index');
 const cors = require('cors');
 const PORT = process.env.PORT;
 const NAME = process.env.DB_NAME;
@@ -19,6 +19,7 @@ app.post('/integra/manual', ManualIntegra);
 app.post('/integra/delete', deletaIntegra);
 app.get('/logsExecucao', searchLogs);
 app.post('/logs/:message', registerLogs);
+app.post('/pages', consultaPagina);
 
 db.authenticate();
 try {

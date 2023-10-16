@@ -15,26 +15,26 @@ const hospital = require('../hospital');
 const logs = require('../Logs/index');
 
 module.exports = Relationship = () => {
-    /* 
-        //Criação das tabelas
-        rn.sync({ force: true });
-        altaAdministrativa.sync({ force: true });
-        cidPrincipal.sync({ force: true });
-        analiseCritica.sync({ force: true });
-        beneficiario.sync({ force: true });
-        cidPrincipal.sync({ force: true });
-        cidSecundario.sync({ force: true });
-        condicaoAdquirida.sync({ force: true });
-        cti.sync({ force: true });
-        drgBrasilRefinado.sync({ force: true });
-        medico.sync({ force: true });
-        procedimento.sync({ force: true });
-        suporteVentilatorio.sync({ force: true });
-        index.sync({ force: true });
-        hospital.sync({ force: true });
-        logs.sync({ force: true });
-    
-     */
+
+    //Criação das tabelas
+    /* rn.sync({ force: true });
+    altaAdministrativa.sync({ force: true });
+    cidPrincipal.sync({ force: true });
+    analiseCritica.sync({ force: true });
+    beneficiario.sync({ force: true });
+    cidPrincipal.sync({ force: true });
+    cidSecundario.sync({ force: true });
+    condicaoAdquirida.sync({ force: true });
+    cti.sync({ force: true });
+    drgBrasilRefinado.sync({ force: true });
+    medico.sync({ force: true });
+    procedimento.sync({ force: true });
+    suporteVentilatorio.sync({ force: true });
+    index.sync({ force: true });
+    hospital.sync({ force: true });
+    logs.sync({ force: true }); */
+
+
     //Relacionamento das tabelas
     //const proc_beneficiario = db.define('PROC_BENEFICIARIO', {});
     //proc_beneficiario.sync();
